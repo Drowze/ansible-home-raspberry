@@ -1,0 +1,28 @@
+---
+- name: Ensure user
+  user:
+    name: "{{ username }}"
+    groups: "{{ user_groups }}"
+    password: "{{ user_password }}"
+    update_password: on_create
+    append: true
+  register: user_details
+
+- name: Ensure mount point
+  file:
+    name: "{{ usb_mount_point }}"
+    state: directory
+
+- name: Get drive uuid
+  shell: "lsblk -no UUID {{ usb_block_name }}"
+  register: usb_drive_uuid
+  check_mode: false
+  changed_when: false
+
+- name: Mount drive and set to auto mount
+  mount:
+    src: "UUID={{ usb_drive_uuid.stdout }}"
+    path: "{{ usb_mount_point }}"
+    opts: "auto,nofail"
+    state: mounted
+    fstype: "{{ usb_filesystem }}"

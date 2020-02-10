@@ -1,0 +1,9 @@
+---
+- name: Install samba
+  apt: name=samba state=present
+
+- name: Copy samba config file
+  template: src=smb.conf.j2 dest=/etc/samba/smb.conf
+
+- name: Ensure samba service
+  service: name=smbd state=started enabled=yes

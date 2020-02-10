@@ -1,0 +1,22 @@
+---
+- hosts: raspberrypi
+  become: yes
+
+  vars_files:
+    - ./vars.yml  
+
+  pre_tasks:  
+    - apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+    - role: users
+      tags: [users]
+    
+    - role: ntp
+      tags: [ntp]
+
+    - role: minidlna
+      tags: [minidlna]
+
+    - role: samba
+      tags: [samba]

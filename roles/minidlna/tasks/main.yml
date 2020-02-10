@@ -1,0 +1,27 @@
+---
+- name: Install
+  apt: name=minidlna state=present
+
+- name: Ensure user
+  user: name=minidlna create_home=no
+
+- name: Execute with correct user
+  lineinfile:
+    path: /etc/minidlna.conf
+    regexp: '^#?user='
+    line: 'user=minidlna'
+
+- name: Remove commented share portions
+  lineinfile:
+    path: /etc/minidlna.conf
+    regexp: '^#media_dir='
+    state: absent
+
+- name: Share desired directories
+  blockinfile:
+    path: /etc/minidlna.conf
+    insertafter: '^#.*"PV" for pictures and video'
+    block: "{{ minidlna_shares }}"
+
+- name: Enable the daemon
+  service: name=minidlna state=started enabled=yes

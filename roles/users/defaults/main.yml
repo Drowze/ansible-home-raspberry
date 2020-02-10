@@ -1,0 +1,7 @@
+---
+username: johndoe
+user_groups: [adm, sudo, audio, video, plugdev, netdev]
+usb_block_name: /dev/sdb
+user_password: 123456
+usb_mount_point: /media/{{ username }}/SAYAKA
+usb_filesystem: ext4

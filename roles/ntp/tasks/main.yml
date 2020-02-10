@@ -1,0 +1,15 @@
+---
+- name: Check ntp
+  shell: timedatectl status | grep synchronized
+  register: timesyncd_status
+  changed_when: false
+  check_mode: false
+
+- set_fact: "ntp_sync_running={{ timesyncd_status.stdout.find(': yes') }}"
+
+- name: Fix timesync
+  shell: timedatectl set-ntp off && timedatectl set-ntp on
+  when: ntp_sync_running == -1
+
+- name: Enable daemon
+  service: name=systemd-timesyncd state=started enabled=yes

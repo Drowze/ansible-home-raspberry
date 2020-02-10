@@ -1,0 +1,10 @@
+[global]
+	map to guest = Bad User
+	log file = /var/log/samba/%m.log
+	max log size = 10000
+
+[sayaka]
+	# requires auth to access
+	path = {{ samba_media_dir }}
+	read only = yes
+	public = no

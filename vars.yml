@@ -1,0 +1,12 @@
+---
+username: pi
+user_groups: [adm, sudo, audio, video, plugdev, netdev]
+usb_block_name: /dev/sdc1
+user_password: 123
+usb_mount_point: /media/{{ username }}/SAYAKA
+usb_filesystem: ext4
+
+minidlna_shares: |
+  media_dir=V,{{ usb_mount_point }}/Video
+  media_dir=V,{{ usb_mount_point }}/untracked
+samba_media_dir: "{{ usb_mount_point }}"
