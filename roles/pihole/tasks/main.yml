@@ -1,0 +1,25 @@
+---
+- name: Check installation
+  command: which pihole
+  register: pihole_instalation
+  failed_when: no
+  changed_when: no
+  check_mode: no
+
+- name: Ensure pihole folder exists
+  file: path=/etc/pihole state=directory
+
+- name: Copy setupVars for unattended installation
+  template:
+    src: setupVars.conf.j2
+    dest: /etc/pihole/setupVars.conf
+  when: not pihole_instalation.stdout|length
+
+- name: Download script
+  get_url: url=https://install.pi-hole.net dest=/tmp/basic-install.sh mode=755
+  when: not pihole_instalation.stdout|length
+
+
+- name: Install script unattended
+  command: bash /tmp/basic-install.sh --unattended
+  when: not pihole_instalation.stdout|length

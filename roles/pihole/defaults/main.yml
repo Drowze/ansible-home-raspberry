@@ -1,0 +1,12 @@
+---
+pihole_network_interface: eth0
+pihole_ipv4_address: 192.168.56.2/24
+pihole_ipv6_address: ''
+pihole_dns_1: 8.8.8.8
+pihole_dns_2: 8.8.4.4
+pihole_query_logging: 'true'
+pihole_install_webserver: 'true'
+pihole_install_web_interface: 'true'
+pihole_enable_lighttpd: 'true'
+pihole_blocking_enabled: 'true'
+pihole_web_password: ''

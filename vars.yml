@@ -1,12 +1,26 @@
 ---
 username: pi
 user_groups: [adm, sudo, audio, video, plugdev, netdev]
-usb_block_name: /dev/sdc1
+usb_block_name: /dev/sdb1
 user_password: 123
+
 usb_mount_point: /media/{{ username }}/SAYAKA
 usb_filesystem: ext4
 
 minidlna_shares: |
   media_dir=V,{{ usb_mount_point }}/Video
   media_dir=V,{{ usb_mount_point }}/untracked
+
 samba_media_dir: "{{ usb_mount_point }}"
+
+pihole_network_interface: eth0
+pihole_ipv4_address: 192.168.56.2/24
+pihole_ipv6_address: ''
+pihole_dns_1: 8.8.8.8
+pihole_dns_2: 8.8.4.4
+pihole_query_logging: 'true'
+pihole_install_webserver: 'true'
+pihole_install_web_interface: 'true'
+pihole_enable_lighttpd: 'true'
+pihole_blocking_enabled: 'true'
+pihole_web_password: ''
