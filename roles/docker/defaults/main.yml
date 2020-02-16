@@ -1,0 +1,4 @@
+---
+docker_package_architecture: amd64
+user_details:
+  name: 'pi'

@@ -24,3 +24,7 @@ pihole_install_web_interface: 'true'
 pihole_enable_lighttpd: 'true'
 pihole_blocking_enabled: 'true'
 pihole_web_password: ''
+
+docker_package_architecture: amd64
+
+smokeping_folder: /home/{{ username }}/smokeping

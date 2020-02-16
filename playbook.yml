@@ -32,3 +32,9 @@
 
     - role: pihole
       tags: [pihole]
+
+    - role: docker
+      tags: [docker]
+
+    - role: docker-smokeping
+      tags: [docker-smokeping]

@@ -1,0 +1,15 @@
+---
+- name: Container presence
+  docker_container:
+    name: smokeping
+    image: linuxserver/smokeping
+    state: started
+    env:
+      PUID: "'{{ user_details.uid }}'"
+      GUID: "'{{ user_details.group }}'"
+      TZ: Europe/Dublin
+    published_ports: ['8080:80']
+    volumes:
+      - "{{ smokeping_folder }}/config:/config"
+      - "{{ smokeping_folder }}/data:/data"
+    restart_policy: unless-stopped
