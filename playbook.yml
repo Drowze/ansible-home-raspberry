@@ -8,6 +8,15 @@
   pre_tasks:  
     - apt: update_cache=yes cache_valid_time=3600
 
+    - name: Ensure user
+      user:
+        name: "{{ username }}"
+        groups: "{{ user_groups }}"
+        password: "{{ user_password }}"
+        update_password: on_create
+        append: true
+      register: user_details
+
   roles:
     - role: users
       tags: [users]
