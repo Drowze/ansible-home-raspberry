@@ -23,7 +23,7 @@ pihole_install_webserver: 'true'
 pihole_install_web_interface: 'true'
 pihole_enable_lighttpd: 'true'
 pihole_blocking_enabled: 'true'
-pihole_web_password: ''
+# pihole_web_password: ''
 
 docker_package_architecture: amd64
 
