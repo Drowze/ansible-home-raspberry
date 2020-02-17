@@ -1,0 +1,3 @@
+---
+skip_list:
+  - '306' # Dash (debians default) does not support pipefail

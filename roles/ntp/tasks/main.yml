@@ -5,7 +5,8 @@
   changed_when: false
   check_mode: false
 
-- set_fact: "ntp_sync_running={{ timesyncd_status.stdout.find(': yes') }}"
+- name: Set running fact
+  set_fact: "ntp_sync_running={{ timesyncd_status.stdout.find(': yes') }}"
 
 - name: Fix timesync
   shell: timedatectl set-ntp off && timedatectl set-ntp on

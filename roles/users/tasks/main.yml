@@ -5,7 +5,7 @@
     state: directory
 
 - name: Get drive uuid
-  shell: "lsblk -no UUID {{ usb_block_name }}"
+  command: "lsblk -no UUID {{ usb_block_name }}"
   register: usb_drive_uuid
   check_mode: false
   changed_when: false
