@@ -19,8 +19,8 @@
       register: user_details
 
   roles:
-    - role: users
-      tags: [users]
+    - role: mount
+      tags: [mount]
 
     - role: ntp
       tags: [ntp]
