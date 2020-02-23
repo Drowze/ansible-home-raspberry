@@ -3,7 +3,5 @@
   apt: name=samba state=present
 
 - name: Copy config file
+  notify: Restart samba
   template: src=smb.conf.j2 dest=/etc/samba/smb.conf
-
-- name: Ensure service
-  service: name=smbd state=started enabled=yes

@@ -11,7 +11,9 @@ minidlna_shares: |
   media_dir=V,{{ usb_mount_point }}/Video
   media_dir=V,{{ usb_mount_point }}/untracked
 
-samba_media_dir: "{{ usb_mount_point }}"
+samba_username: "{{ username }}"
+samba_private_dir: "{{ usb_mount_point }}"
+samba_public_dir: "{{ usb_mount_point }}/Video"
 
 pihole_network_interface: eth0
 pihole_ipv4_address: 192.168.56.2/24

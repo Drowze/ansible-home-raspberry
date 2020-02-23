@@ -1,10 +1,18 @@
 [global]
 	map to guest = Bad User
 	log file = /var/log/samba/%m.log
+	log level = 1
 	max log size = 10000
 
 [sayaka]
-	# requires auth to access
-	path = {{ samba_media_dir }}
-	read only = yes
+	# This share requires authentication to access
+	path = {{ samba_private_dir }}
+	read only = no
 	public = no
+	valid users = {{ samba_username }}
+
+[sayaka-videos]
+	# This share is public
+	path = {{ samba_public_dir }}
+	read only = yes
+	public = yes

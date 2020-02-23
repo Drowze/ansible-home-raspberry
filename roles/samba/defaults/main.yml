@@ -1,2 +1,4 @@
 ---
-samba_media_dir: /media/johndoe/games
+samba_username: johndoe
+samba_private_dir: /media/johndoe
+samba_public_dir: /media/johndoe/games
